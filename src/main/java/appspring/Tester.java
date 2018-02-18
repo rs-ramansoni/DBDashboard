@@ -12,11 +12,11 @@ public class Tester {
 		
 		try {
 			String databaseURL = "jdbc:postgresql://";
-			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
-			databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+			databaseURL += "172.30.41.115:5432";
+			databaseURL += "/" + "EMPLOYEEDB";
 
-			String username = System.getenv("POSTGRESQL_USER");
-			String password = System.getenv("PGPASSWORD");
+			String username = "raman";
+			String password = "password";
 			Connection connection = DriverManager.getConnection(databaseURL, username, password);
 
 			if (connection != null) {
