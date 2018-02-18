@@ -10,14 +10,10 @@ public class Tester {
 		
 		String theMsg = "";
 		
-		try {
-			String databaseURL = "jdbc:postgresql://";
-			databaseURL += "172.30.252.222:5432";
-			databaseURL += "/" + "EMPLOYEEDB";
-
-			String username = "raman";
-			String password = "password";
-			Connection connection = DriverManager.getConnection(databaseURL, username, password);
+		try { 
+			Class.forName("com.mysql.jdbc.Driver");  
+			Connection connection=DriverManager.getConnection(  
+			"jdbc:mysql://172.30.196.51:3306/EMPLOYEEDB","raman","password");
 
 			if (connection != null) {
 				String SQL = "select * from DEPARTMENT LIMIT 1;";
