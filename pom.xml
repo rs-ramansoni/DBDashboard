@@ -9,135 +9,139 @@
 	<url>http://maven.apache.org</url>
 	<parent>
 
-              <groupId>org.springframework.boot</groupId>
+		<groupId>org.springframework.boot</groupId>
 
-              <artifactId>spring-boot-starter-parent</artifactId>
+		<artifactId>spring-boot-starter-parent</artifactId>
 
-              <version>1.3.3.RELEASE</version>
+		<version>1.3.3.RELEASE</version>
 
-       </parent>
-       <dependencies>
+	</parent>
+	<dependencies>
 
-              <dependency>
+		<dependency>
 
-                     <groupId>org.springframework.boot</groupId>
+			<groupId>org.springframework.boot</groupId>
 
-                     <artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 
-                     <exclusions>
+			<exclusions>
 
-                           <exclusion>
+				<exclusion>
 
-                                  <groupId>org.springframework.boot</groupId>
+					<groupId>org.springframework.boot</groupId>
 
-                                  <artifactId>spring-boot-starter-tomcat</artifactId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
 
-                           </exclusion>
+				</exclusion>
 
-                     </exclusions>
+			</exclusions>
 
-              </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1200-jdbc41</version>
+		</dependency>
+		<dependency>
 
-              <dependency>
+			<groupId>javax.servlet</groupId>
 
-                     <groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 
-                     <artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
 
-                     <scope>provided</scope>
+		</dependency>
 
-              </dependency>
+		<dependency>
 
-              <dependency>
+			<groupId>org.springframework</groupId>
 
-        <groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
 
-        <artifactId>spring-beans</artifactId>
+		</dependency>
 
-        </dependency>
+		<dependency>
 
-    <dependency>
+			<groupId>org.springframework</groupId>
 
-        <groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
 
-        <artifactId>spring-context</artifactId>
+		</dependency>
+	</dependencies>
+	<properties>
 
-        </dependency>
-</dependencies>
-       <properties>
+		<java.version>1.8</java.version>
 
-              <java.version>1.8</java.version>
+	</properties>
 
-       </properties>
 
- 
 
- 
 
- 
 
- 
 
-       <build>
 
-              <plugins>
 
-                     <plugin>
 
-                           <groupId>org.springframework.boot</groupId>
+	<build>
 
-                           <artifactId>spring-boot-maven-plugin</artifactId>
+		<plugins>
 
-                     </plugin>
+			<plugin>
 
-                     <plugin>
+				<groupId>org.springframework.boot</groupId>
 
-                           <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 
-                           <artifactId>maven-war-plugin</artifactId>
+			</plugin>
 
-                           <configuration>
+			<plugin>
 
-                                   <failOnMissingWebXml>false</failOnMissingWebXml>
+				<groupId>org.apache.maven.plugins</groupId>
 
-                                  <outputDirectory>target</outputDirectory>
+				<artifactId>maven-war-plugin</artifactId>
 
-                                  <warName>ROOT</warName>
+				<configuration>
 
-                           </configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 
-                     </plugin>
+					<outputDirectory>target</outputDirectory>
 
-              </plugins>
+					<warName>ROOT</warName>
 
-       </build>
+				</configuration>
 
- 
+			</plugin>
 
- 
+		</plugins>
 
-       <repositories>
+	</build>
 
-              <repository>
 
-                     <id>spring-releases</id>
 
-                     <url>https://repo.spring.io/libs-release</url>
 
-              </repository>
 
-       </repositories>
+	<repositories>
 
-       <pluginRepositories>
+		<repository>
 
-              <pluginRepository>
+			<id>spring-releases</id>
 
-                     <id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
 
-                     <url>https://repo.spring.io/libs-release</url>
+		</repository>
 
-              </pluginRepository>
+	</repositories>
 
-       </pluginRepositories>
+	<pluginRepositories>
+
+		<pluginRepository>
+
+			<id>spring-releases</id>
+
+			<url>https://repo.spring.io/libs-release</url>
+
+		</pluginRepository>
+
+	</pluginRepositories>
 
 </project>
