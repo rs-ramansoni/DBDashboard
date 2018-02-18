@@ -12,7 +12,7 @@ public class Tester {
 		
 		try {
 			String databaseURL = "jdbc:postgresql://";
-			databaseURL += "172.30.136.195:5432";
+			databaseURL += "172.30.252.222:5432";
 			databaseURL += "/" + "EMPLOYEEDB";
 
 			String username = "raman";
