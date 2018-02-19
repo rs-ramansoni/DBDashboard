@@ -1,11 +1,10 @@
-
-
 CREATE TABLE COST (
 
   COST_ID serial PRIMARY KEY,
 
   COST_TYPE VARCHAR NOT NULL);
 
+INSERT INTO COST VALUES (1,'HIGH'),(2,'MEDIUM'),(3,'LOW');
 
 CREATE TABLE LOCATION (
 
@@ -13,6 +12,7 @@ CREATE TABLE LOCATION (
 
   REGION VARCHAR NOT NULL);
 
+INSERT INTO LOCATION VALUES (1,'AMER'),(2,'APAC'),(3,'DEU'),(4,'EMEA'),(5,'UK');
 
 CREATE TABLE POSITION (
 
@@ -22,7 +22,7 @@ CREATE TABLE POSITION (
 
   DESCRIPTION VARCHAR NULL DEFAULT NULL);
 
-
+INSERT INTO POSITION VALUES (1,'Analyst',NULL),(2,'Assistant Vice President',NULL),(3,'Associate',NULL),(4,'Director',NULL),(5,'Managing Director',NULL),(6,'No Corporate Title',NULL),(7,'Not Applicable',NULL),(8,'Vice President',NULL);
 
 CREATE TABLE EMPLOYEE_TYPE (
 
@@ -30,7 +30,7 @@ CREATE TABLE EMPLOYEE_TYPE (
 
   EMPLOYEE_TYPE VARCHAR NOT NULL);
 
- 
+ INSERT INTO EMPLOYEE_TYPE VALUES (1,'administrative'),(2,'permanent'),(3,'services');
 
 CREATE TABLE DEPARTMENT (
 
@@ -44,13 +44,17 @@ CREATE TABLE DEPARTMENT (
 
   DESCRIPTION VARCHAR NULL DEFAULT NULL );
 
- 
+INSERT INTO DEPARTMENT(PARENT_ID,DEPARTMENT_KEY, NAME, DESCRIPTION) VALUES (1,'G_6018','Group CIO',NULL),(1,'G_1200','Group CTO',NULL),(1,'G_6413','CIO for Chief Administrative Office',NULL),(1,'G_6901','Safety and Soundness',NULL),(1,'G_6455','CIO for Regulation, Compliance and Anti-Financial',NULL),(1,'G_7110','CIO Collaborative Technology Solutions',NULL),(1,'G_7109','Group IT Strategy & Transformation',NULL);
+
+INSERT INTO DEPARTMENT(PARENT_ID,DEPARTMENT_KEY, NAME, DESCRIPTION) VALUES (2,'G_0705','CIO End User Services',NULL),(2,'G_0735','CIO Engineering Services',NULL),(2,'G_4136','CIO Infrastructure Services',NULL),(2,'G_4137','Strategy & Transformation',NULL),(2,'G_4387','Group Information Records Management (GIRM)',NULL),(2,'G_6509','CIO - Mgmt, Grads & Regional PMO',NULL),(2,'G_6510','Group Architecture',NULL),(2,'G_6546','Business Infrastructure Integration',NULL),(2,'G_6547','CIO Data',NULL),(2,'G_6548','CIO Treasury',NULL),(2,'G_6645','CIO Finance',NULL),(2,'G_6887','Risk, Finance & Treasury in the Americas',NULL),(2,'G_7097','CIO Risk',NULL),(3,'G_5989','CAO - HR CTB',NULL),(3,'G_6818','CAO - Legal CTB',NULL),(5,'G_6506','RCA Tech - Strategy CTB',NULL),(5,'G_6507','RCA Tech - AFC CTB',NULL),(5,'G_6834','RCA Tech - Compliance CTB',NULL),(4,'G_0737','CTO APAC',NULL),(4,'G_1900','Command Center',NULL),(4,'G_2073','Infrastructure Operations',NULL),(4,'G_4142','Enterprise Testing Services',NULL),(4,'G_4413','PWCC, Finance & HR Production',NULL),(4,'G_4416','Risk and Control',NULL),(4,'G_4468','Shared Services Production',NULL),(4,'G_7256','Global Branch Support Production',NULL),(4,'G_7272','Corporate & Investment Bank S&S',NULL),(4,'G_7281','Operational Readiness',NULL),(4,'G_7290','End User Operation',NULL),(4,'G_7296','Run Architecture',NULL),(7,'G_8103','Group IT Strategy & Transformation RTB',NULL),(6,'G_4437', 'Collaborative Technology Solutions RTB', NULL);
+
 CREATE TABLE TENURE (
 
   TENURE_ID serial PRIMARY KEY,
 
-  CATEGORY VARCHAR NOT NULL;
+  CATEGORY VARCHAR NOT NULL);
 
+INSERT INTO TENURE VALUES (1,'LESS THAN 3 YEARS'),(2,'3 TO 5 YEARS'),(3,'5 TO 8 YEARS'),(4,'MORE THAN 8 YEARS');
  
 CREATE TABLE TENURE_MAPPING (
 
@@ -58,7 +62,7 @@ CREATE TABLE TENURE_MAPPING (
 
   YEAR INT NULL);
 
- 
+INSERT INTO TENURE_MAPPING VALUES (1,0),(1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(3,7),(4,8);
 
 CREATE TABLE EMPLOYEE (
 
@@ -82,49 +86,7 @@ CREATE TABLE EMPLOYEE (
 
   JOB_END_DATE DATE NULL DEFAULT NULL,
 
-  DURATION INT NOT NULL);
-
-
-
-ALTER TABLE EMPLOYEE ADD CONSTRAINT UC_EMP_EMP_ID UNIQUE (EMPLOYEE_DB_ID);
-
- 
-
-ALTER TABLE DEPARTMENT ADD CONSTRAINT UC_DEPT_DEPT_KEY UNIQUE (DEPARTMENT_KEY);
-
-
-
-INSERT INTO COST VALUES (1,'HIGH'),(2,'MEDIUM'),(3,'LOW');
-
- 
-
-INSERT INTO EMPLOYEE_TYPE VALUES (1,'administrative'),(2,'permanent'),(3,'services');
-
- 
-
-INSERT INTO LOCATION VALUES (1,'AMER'),(2,'APAC'),(3,'DEU'),(4,'EMEA'),(5,'UK');
-
- 
-
-INSERT INTO POSITION VALUES (1,'Analyst',NULL),(2,'Assistant Vice President',NULL),(3,'Associate',NULL),(4,'Director',NULL),(5,'Managing Director',NULL),(6,'No Corporate Title',NULL),(7,'Not Applicable',NULL),(8,'Vice President',NULL);
-
- 
-
-INSERT INTO TENURE VALUES (1,'LESS THAN 3 YEARS'),(2,'3 TO 5 YEARS'),(3,'5 TO 8 YEARS'),(4,'MORE THAN 8 YEARS');
-
- 
-
-insert INTO TENURE_MAPPING values (1,0),(1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(3,7),(4,8);
-
- 
-
-INSERT INTO DEPARTMENT(PARENT_ID,DEPARTMENT_KEY, NAME, DESCRIPTION) VALUES (1,'G_6018','Group CIO',NULL),(1,'G_1200','Group CTO',NULL),(1,'G_6413','CIO for Chief Administrative Office',NULL),(1,'G_6901','Safety and Soundness',NULL),(1,'G_6455','CIO for Regulation, Compliance and Anti-Financial',NULL),(1,'G_7110','CIO Collaborative Technology Solutions',NULL),(1,'G_7109','Group IT Strategy & Transformation',NULL);
-
- 
-
-INSERT INTO DEPARTMENT(PARENT_ID,DEPARTMENT_KEY, NAME, DESCRIPTION) VALUES (2,'G_0705','CIO End User Services',NULL),(2,'G_0735','CIO Engineering Services',NULL),(2,'G_4136','CIO Infrastructure Services',NULL),(2,'G_4137','Strategy & Transformation',NULL),(2,'G_4387','Group Information Records Management (GIRM)',NULL),(2,'G_6509','CIO - Mgmt, Grads & Regional PMO',NULL),(2,'G_6510','Group Architecture',NULL),(2,'G_6546','Business Infrastructure Integration',NULL),(2,'G_6547','CIO Data',NULL),(2,'G_6548','CIO Treasury',NULL),(2,'G_6645','CIO Finance',NULL),(2,'G_6887','Risk, Finance & Treasury in the Americas',NULL),(2,'G_7097','CIO Risk',NULL),(3,'G_5989','CAO - HR CTB',NULL),(3,'G_6818','CAO - Legal CTB',NULL),(5,'G_6506','RCA Tech - Strategy CTB',NULL),(5,'G_6507','RCA Tech - AFC CTB',NULL),(5,'G_6834','RCA Tech - Compliance CTB',NULL),(4,'G_0737','CTO APAC',NULL),(4,'G_1900','Command Center',NULL),(4,'G_2073','Infrastructure Operations',NULL),(4,'G_4142','Enterprise Testing Services',NULL),(4,'G_4413','PWCC, Finance & HR Production',NULL),(4,'G_4416','Risk and Control',NULL),(4,'G_4468','Shared Services Production',NULL),(4,'G_7256','Global Branch Support Production',NULL),(4,'G_7272','Corporate & Investment Bank S&S',NULL),(4,'G_7281','Operational Readiness',NULL),(4,'G_7290','End User Operation',NULL),(4,'G_7296','Run Architecture',NULL),(7,'G_8103','Group IT Strategy & Transformation RTB',NULL),(6,'G_4437', 'Collaborative Technology Solutions RTB', NULL);
-
- 
+  DURATION INT NOT NULL); 
 
 INSERT INTO EMPLOYEE (EMPLOYEE_DB_ID,DEPT_ID, COST_ID, EMPLOYEE_TYPE_ID,  TENURE_ID, LOCATION_ID, JOINING_DATE, JOB_END_DATE,POSITION_ID,DURATION)
 
