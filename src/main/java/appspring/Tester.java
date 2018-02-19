@@ -7,16 +7,15 @@ import java.sql.Statement;
 
 public class Tester {
 	public String generateMsg() {
-		
+
 		String theMsg = "";
-		
+
 		try {
 			String databaseURL = "jdbc:postgresql://";
-			databaseURL += "172.30.39.237:5432";
-			databaseURL += "/" + "EMPLOYEEDB";
-
-			String username = "raman";
-			String password = "password";
+			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
+			databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+			String username = System.getenv("POSTGRESQL_USER");
+			String password = System.getenv("PGPASSWORD");
 			Connection connection = DriverManager.getConnection(databaseURL, username, password);
 
 			if (connection != null) {
